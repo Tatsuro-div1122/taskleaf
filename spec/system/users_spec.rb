@@ -28,6 +28,19 @@ describe 'ユーザー管理機能', type: :system do
         expect(page).not_to have_content 'ユーザー一覧'
       end
     end
+
+    context 'ユーザー一覧ボタンを押下したとき' do
+      let(:login_user) { admin }
+
+      before do
+        FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com')
+        visit admin_users_path
+      end
+
+      it 'ユーザー一覧が表示される' do
+        expect(page).to have_content 'ユーザーA'
+      end
+    end
   end
 end
 

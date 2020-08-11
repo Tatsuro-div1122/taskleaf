@@ -46,6 +46,7 @@ describe 'タスク管理機能', type: :system do
 
   describe '新規作成機能' do
     let(:login_user) { user_a }
+    let(:task_name) { '新規作成のテストを書く' }
 
     before do
       visit new_task_path
@@ -54,8 +55,6 @@ describe 'タスク管理機能', type: :system do
     end
 
     context '新規作成画面で名称を入力したとき' do
-      let(:task_name) { '新規作成のテストを書く' }
-
       it '正常に登録される' do
         expect(page).to have_selector '.alert-success', text: '新規作成のテストを書く'
       end
@@ -68,27 +67,6 @@ describe 'タスク管理機能', type: :system do
         within '#error_explanation' do
           expect(page).to have_content '名称を入力してください'
         end
-      end
-    end
-  end
-
-  describe '編集機能' do
-    let( :login_user ) { user_a }
-
-    before do
-      visit new_task_path
-      fill_in 'name', with: '新規投稿'
-      click_button '登録する'
-      visit edit_task_path(task_a)
-      fill_in 'name', with: 'task_name'
-      click_button '更新する'
-    end
-
-    context '編集画面で名称を入力したとき' do
-      let( :task_name ) { '更新投稿' }
-
-      it '正常に更新される' do
-        expect(page).to have_selector '.alert-success', text: '更新投稿'
       end
     end
   end
