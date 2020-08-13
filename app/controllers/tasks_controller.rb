@@ -21,6 +21,11 @@ class TasksController < ApplicationController
     end
   end
 
+  def confirm_new
+    @task = current_user.tasks.new(task_params)
+    render :new unless @task.valid?
+  end
+
   def edit
   end
 
