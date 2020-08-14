@@ -13,8 +13,13 @@ class TasksController < ApplicationController
 
   def create
     @task = current_user.tasks.new(task_params)
+
+    if params[:back].present?
+      render :new
+      return
+    end
+
     if @task.save
-      logger.debug "task: #{@task.attributes.inspect}"
       redirect_to @task, notice: "タスク「#{@task.name}」を登録しました。"
     else
       render :new
@@ -32,6 +37,10 @@ class TasksController < ApplicationController
   def update
     @task.update!(task_params)
     redirect_to tasks_url, notice: "タスク「#{@task.name}」を更新しました。"
+  end
+
+  def confirm_edit
+    @task = Task.find(params[:id])
   end
 
   def destroy
