@@ -41,6 +41,7 @@ class TasksController < ApplicationController
 
   def confirm_edit
     @task = Task.find(params[:id])
+    render :edit unless @task.valid?
   end
 
   def destroy
