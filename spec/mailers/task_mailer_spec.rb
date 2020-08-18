@@ -19,7 +19,7 @@ describe TaskMailer, type: :mailer do
       # ヘッダ
       expect(mail.subject).to eq('タスク作成完了メール')
       expect(mail.to).to eq(['user@example.com'])
-      expect(mail.from).to eq(['taskleaf@exapmle.com'])
+      expect(mail.from).to eq(['taskleaf@example.com'])
 
       # text形式の本文
       expect(text_body).to match('以下のタスクを作成しました')
