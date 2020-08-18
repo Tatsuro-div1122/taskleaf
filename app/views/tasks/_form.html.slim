@@ -15,7 +15,7 @@
 /   - task.errors.full_messages.each do |message|
 /     li= message
 
-= render patial: 'error', locals { task: task }
+= render partial: 'error', locals: { task: task }
 
 = form_with model: task, local: true, url: confirm_new_task_path do |f|
   .form-group
