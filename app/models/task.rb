@@ -1,4 +1,6 @@
 class Task < ApplicationRecord
+  paginates_per 10
+
   def self.csv_attributes
     ["name", "description", "created_at", "updated_at"]
   end
