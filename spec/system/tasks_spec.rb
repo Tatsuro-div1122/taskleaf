@@ -74,4 +74,17 @@ describe 'タスク管理機能', type: :system do
       end
     end
   end
+
+  describe '編集機能' do
+    let(:login_user) { user_a }
+
+    before do
+      visit edit_task_path(task_a)
+    end
+
+    it '編集画面が表示される' do
+      expect(page).to have_content 'タスクの編集'
+    end
+
+  end
 end
