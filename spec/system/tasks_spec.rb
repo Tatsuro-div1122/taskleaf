@@ -58,6 +58,10 @@ describe 'タスク管理機能', type: :system do
       it '正常に登録される' do
         expect(page).to have_selector '.alert-success', text: '新規作成のテストを書く'
       end
+
+      it '詳細画面に遷移する' do
+        expect(page).to have_content 'タスクの詳細'
+      end
     end
 
     context '新規作成画面で名称を入力しなかったとき' do
